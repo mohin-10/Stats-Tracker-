@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0d">
+<title>MOHIN Career Tracker</title>
+<style>
+:root{--bg:#09090b;--panel:#141416;--panel2:#1c1c20;--gold:#d8b45a;--gold2:#f2d88c;--muted:#a7a7ad;--line:#343438;--white:#f7f5ef;--green:#8cdaa2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#252014 0,#0b0b0d 48%);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:1000px;margin:auto;padding:18px 14px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 22px}.brand{font-weight:900;letter-spacing:2px;font-size:19px}.brand span{color:var(--gold)}.badge{border:1px solid #705a2a;color:var(--gold2);font-size:10px;letter-spacing:1.5px;padding:7px 9px;border-radius:99px}
+.hero{display:grid;grid-template-columns:1fr;gap:16px}.player-card{position:relative;overflow:hidden;min-height:250px;border:1px solid #8b7037;border-radius:22px;background:linear-gradient(140deg,#242017,#111113 60%,#332814);padding:20px;box-shadow:0 15px 45px #0008}.player-card:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #c9a64b35;border-radius:50%;right:-60px;top:20px;box-shadow:0 0 0 18px #c9a64b0a,0 0 0 40px #c9a64b08}.cardtop{display:flex;justify-content:space-between;position:relative}.rating{font-size:45px;line-height:1;font-weight:900;color:var(--gold2)}.position{font-size:14px;font-weight:800;letter-spacing:2px;margin-top:5px}.ovrlabel{font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:7px}.crest{width:50px;height:58px;border:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);display:grid;place-items:center;color:var(--gold2);font-weight:900;font-size:16px;background:#d8b45a12}.playername{position:relative;font-size:29px;font-weight:950;letter-spacing:4px;margin-top:27px}.subpos{position:relative;color:var(--gold2);font-size:11px;letter-spacing:2px;margin-top:5px}.attrs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;max-width:330px}.attr{display:flex;justify-content:space-between;border-bottom:1px solid #d8b45a55;padding:5px 0;font-size:12px}.attr b{color:var(--gold2)}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 12px}.section-title h2{font-size:14px;letter-spacing:1.7px;margin:0}.eyebrow{font-size:10px;color:var(--gold);letter-spacing:1.5px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:linear-gradient(145deg,#19191c,#111113);border:1px solid var(--line);border-radius:15px;padding:15px}.stat .label{font-size:11px;color:var(--muted)}.stat .num{font-size:27px;font-weight:850;margin-top:6px}.stat .num small{font-size:12px;color:var(--gold);font-weight:700}
+.panel{background:#121214eF;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:11px;color:#c7c4ba}input,select{width:100%;background:#09090b;color:var(--white);border:1px solid #414146;border-radius:10px;padding:12px 10px;font:inherit;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--gold)}.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:1px solid var(--gold);border-radius:11px;background:var(--gold);color:#17130a;font-weight:850;padding:12px 15px;font-size:12px;letter-spacing:.4px;cursor:pointer}.btn.secondary{background:transparent;color:var(--gold2)}.btn.danger{border-color:#744343;color:#ffaaaa;background:transparent}.hint{font-size:11px;line-height:1.5;color:var(--muted);margin-top:10px}.accuracy{color:var(--green);font-weight:800}.match{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #303034}.match:last-child{border-bottom:0}.match strong{display:block;font-size:13px}.match small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.matchright{text-align:right;white-space:nowrap}.matchright b{color:var(--gold2)}.empty{color:var(--muted);font-size:12px;text-align:center;padding:22px 5px}.foot{text-align:center;color:#76767b;font-size:10px;margin-top:28px;letter-spacing:1px}
+@media(min-width:720px){.hero{grid-template-columns:1fr 1fr;align-items:stretch}.player-card{min-height:290px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stat .num{font-size:30px}.wrap{padding:25px 22px 45px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand">MOHIN <span>CAREER</span></div><div class="badge">PLAYER TRACKER · V1</div></header>
+<section class="hero">
+  <div class="player-card">
+    <div class="cardtop"><div><div class="rating" id="overall">—</div><div class="position">LB</div><div class="ovrlabel">OVERALL RATING*</div></div><div class="crest">M</div></div>
+    <div class="playername">MOHIN</div><div class="subpos">LB · LWF · MID</div>
+    <div class="attrs">
+      <div class="attr"><span>PAC</span><b id="pac">—</b></div><div class="attr"><span>SHO</span><b id="sho">—</b></div><div class="attr"><span>PAS</span><b id="pas">—</b></div>
+      <div class="attr"><span>DRI</span><b id="dri">—</b></div><div class="attr"><span>DEF</span><b id="def">—</b></div><div class="attr"><span>PHY</span><b id="phy">—</b></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-title" style="margin-top:0"><h2>CAREER OVERVIEW</h2><span class="eyebrow">YOUR NUMBERS</span></div>
+    <div class="stats">
+      <div class="stat"><div class="label">Matches</div><div class="num" id="matches">0</div></div>
+      <div class="stat"><div class="label">Goals</div><div class="num" id="goals">0</div></div>
+      <div class="stat"><div class="label">Assists</div><div class="num" id="assists">0</div></div>
+      <div class="stat"><div class="label">Pass accuracy</div><div class="num" id="accuracy">—<small>%</small></div></div>
+      <div class="stat"><div class="label">Total passes</div><div class="num" id="passes">0</div></div>
+      <div class="stat"><div class="label">Successful passes</div><div class="num" id="success">0</div></div>
+      <div class="stat"><div class="label">Shots on target</div><div class="num" id="sot">0</div></div>
+      <div class="stat"><div class="label">Minutes played</div><div class="num" id="minutes">0</div></div>
+    </div>
+  </div>
+</section>
+<div class="section-title"><h2>ADD MATCH PERFORMANCE</h2><span class="eyebrow">MANUAL ENTRY</span></div>
+<form class="panel" id="matchForm">
+ <div class="formgrid">
+  <div class="field"><label for="date">Match date</label><input id="date" type="date" required></div>
+  <div class="field"><label for="opponent">Opponent / match note</label><input id="opponent" maxlength="60" placeholder="e.g. Tuesday game"></div>
+  <div class="field"><label for="positionInput">Position played</label><select id="positionInput"><option>LB</option><option>LWF</option><option>LW</option><option>CM</option><option>CAM</option><option>CDM</option><option>RM</option><option>LM</option><option>RB</option><option>CB</option><option>ST</option><option>Other</option></select></div>
+  <div class="field"><label for="minutesInput">Minutes played</label><input id="minutesInput" type="number" min="0" max="240" value="60"></div>
+  <div class="field"><label for="goalsInput">Goals</label><input id="goalsInput" type="number" min="0" value="0" required></div>
+  <div class="field"><label for="assistsInput">Assists</label><input id="assistsInput" type="number" min="0" value="0" required></div>
+  <div class="field"><label for="passesInput">Total passes</label><input id="passesInput" type="number" min="0" value="0" required></div>
+  <div class="field"><label for="successfulInput">Successful passes</label><input id="successfulInput" type="number" min="0" value="0" required></div>
+  <div class="field"><label for="shotsInput">Shots</label><input id="shotsInput" type="number" min="0" value="0"></div>
+  <div class="field"><label for="sotInput">Shots on target</label><input id="sotInput" type="number" min="0" value="0"></div>
+  <div class="field"><label for="dribblesInput">Successful dribbles</label><input id="dribblesInput" type="number" min="0" value="0"></div>
+  <div class="field"><label for="tacklesInput">Successful tackles</label><input id="tacklesInput" type="number" min="0" value="0"></div>
+ </div>
+ <div class="btnrow"><button class="btn" type="submit">＋ SAVE MATCH</button><button class="btn secondary" type="reset">RESET FORM</button></div>
+ <div class="hint">Pass accuracy is calculated automatically. Successful passes cannot be greater than total passes. Your entries are saved in this browser on this phone.</div>
+</form>
+<div class="section-title"><h2>MATCH HISTORY</h2><span class="eyebrow" id="matchCount">0 MATCHES</span></div>
+<div class="panel" id="history"><div class="empty">No matches recorded yet. Your career starts with the first entry. ⚽</div></div>
+<div class="section-title"><h2>DATA & BACKUP</h2><span class="eyebrow">KEEP YOUR CAREER SAFE</span></div>
+<div class="panel"><div class="hint" style="margin-top:0">Export a backup file regularly. Browser data can be lost if site data is cleared or you switch browsers/devices.</div><div class="btnrow"><button class="btn secondary" id="exportBtn" type="button">EXPORT BACKUP</button><label class="btn secondary" for="importFile" style="display:inline-flex;align-items:center;cursor:pointer">IMPORT BACKUP</label><input id="importFile" type="file" accept="application/json,.json" style="display:none"><button class="btn danger" id="clearBtn" type="button">RESET ALL DATA</button></div></div>
+<div class="foot">MOHIN CAREER TRACKER · BLACK & GOLD · V1</div>
+</div>
+<script>
+const KEY='mohinCareerMatchesV1';
+let records=[];
+const $=id=>document.getElementById(id);
+const numeric=id=>Math.max(0,Number($(id).value)||0);
+const today=new Date(); $('date').value=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');records=Array.isArray(x)?x:[]}catch{records=[]}render()}
+function save(){localStorage.setItem(KEY,JSON.stringify(records));render()}
+function sum(key){return records.reduce((n,r)=>n+(Number(r[key])||0),0)}
+function rating(n){return Math.max(1,Math.min(99,Math.round(n)))}
+function render(){
+ const totalPass=sum('passes'),goodPass=sum('successful'),g=sum('goals'),a=sum('assists'),matches=records.length,minutes=sum('minutes');
+ $('matches').textContent=matches;$('goals').textContent=g;$('assists').textContent=a;$('passes').textContent=totalPass;$('success').textContent=goodPass;$('sot').textContent=sum('sot');$('minutes').textContent=minutes;
+ $('accuracy').innerHTML=(totalPass?Math.round(goodPass/totalPass*100):0)+'<small>%</small>';
+ // Provisional attributes derived from recorded stats; not official EA ratings.
+ const passRate=totalPass?goodPass/totalPass:0,shots=sum('shots'),dr=sum('dribbles'),t=sum('tackles');
+ const attrs={pac:matches?rating(55+Math.min(25,dr/matches*3)):null,sho:matches?rating(45+Math.min(35,g/matches*18+sum('sot')/matches*2)):null,pas:matches?rating(45+passRate*35+Math.min(15,totalPass/Math.max(1,matches)/4)):null,dri:matches?rating(45+Math.min(35,dr/Math.max(1,matches)*4)):null,def:matches?rating(45+Math.min(35,t/Math.max(1,matches)*5)):null,phy:matches?rating(50+Math.min(25,minutes/Math.max(1,matches)/4)):null};
+ Object.entries(attrs).forEach(([k,v])=>$(k).textContent=v??'—');
+ $('overall').textContent=matches?rating((attrs.pac+attrs.sho+attrs.pas+attrs.dri+attrs.def+attrs.phy)/6):'—';
+ $('matchCount').textContent=`${matches} MATCH${matches===1?'':'ES'}`;
+ const h=$('history');if(!matches){h.innerHTML='<div class="empty">No matches recorded yet. Your career starts with the first entry. ⚽</div>';return}
+ h.innerHTML=[...records].sort((x,y)=>y.date.localeCompare(x.date)).map(r=>`<div class="match"><div><strong>${esc(r.opponent||'Match day')} · ${esc(r.position)}</strong><small>${esc(r.date)} · ${r.minutes} min · ${r.passes} passes (${r.successful}/${r.passes?Math.round(r.successful/r.passes*100):0}% accurate)</small><small>${r.shots} shots · ${r.sot} on target · ${r.dribbles} dribbles · ${r.tackles} tackles</small></div><div class="matchright"><b>${r.goals} G · ${r.assists} A</b><br><button class="btn danger" style="padding:6px 8px;margin-top:7px;font-size:10px" onclick="deleteMatch('${r.id}')">DELETE</button></div></div>`).join('');
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('matchForm').addEventListener('submit',e=>{
+ e.preventDefault();const passes=numeric('passesInput'),successful=numeric('successfulInput'),shots=numeric('shotsInput'),sot=numeric('sotInput');
+ if(successful>passes){alert('Successful passes cannot be greater than total passes.');return}
+ if(sot>shots){alert('Shots on target cannot be greater than total shots.');return}
+ const r={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:$('date').value,opponent:$('opponent').value.trim(),position:$('positionInput').value,minutes:numeric('minutesInput'),goals:numeric('goalsInput'),assists:numeric('assistsInput'),passes,successful,shots,sot,dribbles:numeric('dribblesInput'),tackles:numeric('tacklesInput')};
+ records.push(r);save();const d=$('date').value; e.target.reset();$('date').value=d;$('minutesInput').value=60;['goalsInput','assistsInput','passesInput','successfulInput','shotsInput','sotInput','dribblesInput','tacklesInput'].forEach(id=>$(id).value=0);window.scrollTo({top:0,behavior:'smooth'});
+});
+window.deleteMatch=id=>{if(confirm('Delete this match record?')){records=records.filter(r=>r.id!==id);save()}};
+$('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'MOHIN Career Tracker',version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mohin-career-backup.json';a.click();URL.revokeObjectURL(a.href)});
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const obj=JSON.parse(await f.text());const arr=Array.isArray(obj)?obj:obj.records;if(!Array.isArray(arr))throw Error();if(!confirm('Import backup and replace current match history?'))return;records=arr;save();alert('Backup imported successfully!')}catch{alert('This backup file could not be read.')}e.target.value=''});
+$('clearBtn').addEventListener('click',()=>{if(confirm('This will permanently delete all saved match data in this browser. Export a backup first. Continue?')){records=[];save()}});
+load();
+</script>
+</body>
+</html>
