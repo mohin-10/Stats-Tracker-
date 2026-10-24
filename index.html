@@ -4,25 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b0b0d">
-<title>Career Tracker</title>
+<title>MOHIN Career Tracker</title>
 <style>
 :root{--bg:#09090b;--panel:#141416;--panel2:#1c1c20;--gold:#d8b45a;--gold2:#f2d88c;--muted:#a7a7ad;--line:#343438;--white:#f7f5ef;--green:#8cdaa2}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#252014 0,#0b0b0d 48%);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
 .wrap{max-width:1000px;margin:auto;padding:18px 14px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 22px}.brand{font-weight:900;letter-spacing:2px;font-size:19px}.brand span{color:var(--gold)}.badge{border:1px solid #705a2a;color:var(--gold2);font-size:10px;letter-spacing:1.5px;padding:7px 9px;border-radius:99px}
-.hero{display:grid;grid-template-columns:1fr;gap:16px}.player-card{position:relative;overflow:hidden;min-height:250px;border:1px solid #8b7037;border-radius:22px;background:linear-gradient(140deg,#242017,#111113 60%,#332814);padding:20px;box-shadow:0 15px 45px #0008}.player-card:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #c9a64b35;border-radius:50%;right:-60px;top:20px;box-shadow:0 0 0 18px #c9a64b0a,0 0 0 40px #c9a64b08}.cardtop{display:flex;justify-content:space-between;position:relative}.rating{font-size:45px;line-height:1;font-weight:900;color:var(--gold2)}.position{font-size:14px;font-weight:800;letter-spacing:2px;margin-top:5px}.ovrlabel{font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:7px}.crest{width:50px;height:58px;border:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);display:grid;place-items:center;color:var(--gold2);font-weight:900;font-size:16px;background:#d8b45a12}.playername{position:relative;font-size:29px;font-weight:950;letter-spacing:4px;margin-top:27px}.subpos{position:relative;color:var(--gold2);font-size:11px;letter-spacing:2px;margin-top:5px}.attrs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;max-width:330px}.attr{display:flex;justify-content:space-between;border-bottom:1px solid #d8b45a55;padding:5px 0;font-size:12px}.attr b{color:var(--gold2)}
+.hero{display:grid;grid-template-columns:1fr;gap:16px}.player-card{position:relative;overflow:hidden;min-height:250px;border:1px solid #8b7037;border-radius:22px;background:linear-gradient(140deg,#242017,#111113 60%,#332814);padding:20px;box-shadow:0 15px 45px #0008}.player-card:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #c9a64b35;border-radius:50%;right:-60px;top:20px;box-shadow:0 0 0 18px #c9a64b0a,0 0 0 40px #c9a64b08}.cardtop{display:flex;justify-content:space-between;position:relative}.rating{font-size:45px;line-height:1;font-weight:900;color:var(--gold2)}.position{font-size:14px;font-weight:800;letter-spacing:2px;margin-top:5px}.ovrlabel{font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:7px}.crest{width:50px;height:58px;border:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);display:grid;place-items:center;color:var(--gold2);font-weight:900;font-size:16px;background:#d8b45a12}.playername{position:relative;font-size:29px;font-weight:950;letter-spacing:3px;margin-top:0;overflow-wrap:anywhere}.subpos{position:relative;color:var(--gold2);font-size:11px;letter-spacing:2px;margin-top:5px}.attrs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;max-width:330px}.attr{display:flex;justify-content:space-between;border-bottom:1px solid #d8b45a55;padding:5px 0;font-size:12px}.attr b{color:var(--gold2)}
 .section-title{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 12px}.section-title h2{font-size:14px;letter-spacing:1.7px;margin:0}.eyebrow{font-size:10px;color:var(--gold);letter-spacing:1.5px}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:linear-gradient(145deg,#19191c,#111113);border:1px solid var(--line);border-radius:15px;padding:15px}.stat .label{font-size:11px;color:var(--muted)}.stat .num{font-size:27px;font-weight:850;margin-top:6px}.stat .num small{font-size:12px;color:var(--gold);font-weight:700}
-.panel{background:#121214eF;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:11px;color:#c7c4ba}input,select{width:100%;background:#09090b;color:var(--white);border:1px solid #414146;border-radius:10px;padding:12px 10px;font:inherit;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--gold)}.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:1px solid var(--gold);border-radius:11px;background:var(--gold);color:#17130a;font-weight:850;padding:12px 15px;font-size:12px;letter-spacing:.4px;cursor:pointer}.btn.secondary{background:transparent;color:var(--gold2)}.btn.danger{border-color:#744343;color:#ffaaaa;background:transparent}.hint{font-size:11px;line-height:1.5;color:var(--muted);margin-top:10px}.accuracy{color:var(--green);font-weight:800}.match{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #303034}.match:last-child{border-bottom:0}.match strong{display:block;font-size:13px}.match small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.matchright{text-align:right;white-space:nowrap}.matchright b{color:var(--gold2)}.empty{color:var(--muted);font-size:12px;text-align:center;padding:22px 5px}.foot{text-align:center;color:#76767b;font-size:10px;margin-top:28px;letter-spacing:1px}
+.panel{background:#121214eF;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}.profile-panel{border-color:#725b2b;background:linear-gradient(145deg,#1b1913,#111113)}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.profile-grid .full{grid-column:1/-1}.profile-status{font-size:10px;color:var(--gold2);letter-spacing:1px}.photo-row{display:flex;align-items:center;gap:14px}.photo-preview{width:76px;height:76px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:#222;display:grid;place-items:center;color:var(--gold2);font-weight:900;font-size:22px;flex-shrink:0}.photo-help{font-size:11px;color:var(--muted);line-height:1.5}.player-identity{display:flex;align-items:center;gap:12px;position:relative;margin-top:22px}.player-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);display:none;background:#171717}.player-photo.show{display:block}.playername{margin-top:0;overflow-wrap:anywhere}.profile-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:11px;color:#c7c4ba}input,select{width:100%;background:#09090b;color:var(--white);border:1px solid #414146;border-radius:10px;padding:12px 10px;font:inherit;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--gold)}.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:1px solid var(--gold);border-radius:11px;background:var(--gold);color:#17130a;font-weight:850;padding:12px 15px;font-size:12px;letter-spacing:.4px;cursor:pointer}.btn.secondary{background:transparent;color:var(--gold2)}.btn.danger{border-color:#744343;color:#ffaaaa;background:transparent}.hint{font-size:11px;line-height:1.5;color:var(--muted);margin-top:10px}.accuracy{color:var(--green);font-weight:800}.match{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #303034}.match:last-child{border-bottom:0}.match strong{display:block;font-size:13px}.match small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.matchright{text-align:right;white-space:nowrap}.matchright b{color:var(--gold2)}.empty{color:var(--muted);font-size:12px;text-align:center;padding:22px 5px}.foot{text-align:center;color:#76767b;font-size:10px;margin-top:28px;letter-spacing:1px}
 @media(min-width:720px){.hero{grid-template-columns:1fr 1fr;align-items:stretch}.player-card{min-height:290px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stat .num{font-size:30px}.wrap{padding:25px 22px 45px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="top"><div class="brand">STATS<span>TRACKER</span></div><div class="badge">PLAYER TRACKER · V1</div></header>
+<header class="top"><div class="brand">CAREER <span>TRACKER</span></div><div class="badge">PLAYER TRACKER · V2</div></header>
+<div class="section-title" style="margin-top:0"><h2>CREATE YOUR PROFILE</h2><span class="eyebrow">YOUR PLAYER CARD</span></div>
+<form class="panel profile-panel" id="profileForm">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+    <strong style="font-size:13px;letter-spacing:1px">PLAYER IDENTITY</strong>
+    <span class="profile-status" id="profileStatus">PROFILE NOT SET</span>
+  </div>
+  <div class="profile-grid">
+    <div class="field full"><label for="profileName">Player name</label><input id="profileName" maxlength="24" placeholder="Enter your name (e.g. Mohin)" required></div>
+    <div class="field"><label for="mainPosition">Main position</label><select id="mainPosition" required><option value="">Choose position</option><option>GK</option><option>LB</option><option>CB</option><option>RB</option><option>LWB</option><option>RWB</option><option>CDM</option><option>CM</option><option>CAM</option><option>LM</option><option>RM</option><option>LW</option><option>LWF</option><option>RW</option><option>RWF</option><option>CF</option><option>ST</option></select></div>
+    <div class="field"><label for="secondPosition">2nd position</label><select id="secondPosition"><option value="">None / choose</option><option>GK</option><option>LB</option><option>CB</option><option>RB</option><option>LWB</option><option>RWB</option><option>CDM</option><option>CM</option><option>CAM</option><option>LM</option><option>RM</option><option>LW</option><option>LWF</option><option>RW</option><option>RWF</option><option>CF</option><option>ST</option></select></div>
+    <div class="field full"><label>Player photo</label><div class="photo-row"><img id="photoPreview" class="photo-preview" alt="Photo preview" style="display:none"><div id="photoPlaceholder" class="photo-preview">+</div><div style="min-width:0"><input id="photoInput" type="file" accept="image/*" style="padding:8px;font-size:12px"><div class="photo-help">Choose a photo from your phone. It stays in this browser on this device.</div></div></div></div>
+  </div>
+  <div class="profile-buttons"><button class="btn" type="submit">SAVE PROFILE</button><button class="btn secondary" type="button" id="removePhotoBtn">REMOVE PHOTO</button></div>
+  <div class="hint">Share the website link with friends so they can make their own profiles on their phones.</div>
+</form>
 <section class="hero">
   <div class="player-card">
-    <div class="cardtop"><div><div class="rating" id="overall">—</div><div class="position">LB</div><div class="ovrlabel">OVERALL RATING*</div></div><div class="crest">M</div></div>
-    <div class="playername">MOHIN</div><div class="subpos">LB · LWF · MID</div>
+    <div class="cardtop"><div><div class="rating" id="overall">—</div><div class="position" id="cardMainPosition">LB</div><div class="ovrlabel">OVERALL RATING*</div></div><div class="crest" id="crestInitial">M</div></div>
+    <div class="player-identity"><img id="cardPhoto" class="player-photo" alt="Player photo"><div><div class="playername" id="cardPlayerName">YOUR NAME</div><div class="subpos" id="cardPositions">CHOOSE YOUR POSITIONS</div></div></div>
     <div class="attrs">
       <div class="attr"><span>PAC</span><b id="pac">—</b></div><div class="attr"><span>SHO</span><b id="sho">—</b></div><div class="attr"><span>PAS</span><b id="pas">—</b></div>
       <div class="attr"><span>DRI</span><b id="dri">—</b></div><div class="attr"><span>DEF</span><b id="def">—</b></div><div class="attr"><span>PHY</span><b id="phy">—</b></div>
@@ -68,6 +83,56 @@
 <div class="foot">MOHIN CAREER TRACKER · BLACK & GOLD · V1</div>
 </div>
 <script>
+const PROFILE_KEY='careerTrackerProfileV2';
+let profile={name:'',main:'',second:'',photo:''};
+function applyProfile(){
+  $('profileName').value=profile.name||'';
+  $('mainPosition').value=profile.main||'';
+  $('secondPosition').value=profile.second||'';
+  const hasPhoto=!!profile.photo;
+  $('photoPreview').src=profile.photo||'';
+  $('photoPreview').style.display=hasPhoto?'block':'none';
+  $('photoPlaceholder').style.display=hasPhoto?'none':'grid';
+  $('cardPhoto').src=profile.photo||'';
+  $('cardPhoto').classList.toggle('show',hasPhoto);
+  const name=profile.name||'YOUR NAME';
+  $('cardPlayerName').textContent=name.toUpperCase();
+  $('cardMainPosition').textContent=profile.main||'POS';
+  $('cardPositions').textContent=[profile.main,profile.second].filter(Boolean).join(' · ')||'CHOOSE YOUR POSITIONS';
+  $('crestInitial').textContent=(profile.name||'P').trim().charAt(0).toUpperCase();
+  $('profileStatus').textContent=profile.name&&profile.main?'PROFILE SAVED':'PROFILE NOT SET';
+}
+function loadProfile(){try{profile=JSON.parse(localStorage.getItem(PROFILE_KEY)||'{}');if(!profile||typeof profile!=='object')profile={};}catch{profile={}}applyProfile()}
+$('profileForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  profile.name=$('profileName').value.trim();
+  profile.main=$('mainPosition').value;
+  profile.second=$('secondPosition').value;
+  try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));applyProfile();alert('Player profile saved! Your card is updated. ⚽');}
+  catch{alert('Could not save the profile. Try choosing a smaller photo.');}
+});
+$('photoInput').addEventListener('change',e=>{
+  const file=e.target.files&&e.target.files[0];if(!file)return;
+  if(!file.type.startsWith('image/')){alert('Please choose an image file.');return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');const max=512;const scale=Math.min(1,max/Math.max(img.width,img.height));
+      canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      profile.photo=canvas.toDataURL('image/jpeg',0.78);
+      $('photoPreview').src=profile.photo;$('photoPreview').style.display='block';$('photoPlaceholder').style.display='none';
+    };
+    img.onerror=()=>alert('Could not load that image. Please try another photo.');
+    img.src=reader.result;
+  };
+  reader.readAsDataURL(file);
+});
+$('removePhotoBtn').addEventListener('click',()=>{
+  profile.photo='';$('photoInput').value='';$('photoPreview').removeAttribute('src');$('photoPreview').style.display='none';$('photoPlaceholder').style.display='grid';
+});
+
 const KEY='mohinCareerMatchesV1';
 let records=[];
 const $=id=>document.getElementById(id);
@@ -102,6 +167,7 @@ window.deleteMatch=id=>{if(confirm('Delete this match record?')){records=records
 $('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'MOHIN Career Tracker',version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mohin-career-backup.json';a.click();URL.revokeObjectURL(a.href)});
 $('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const obj=JSON.parse(await f.text());const arr=Array.isArray(obj)?obj:obj.records;if(!Array.isArray(arr))throw Error();if(!confirm('Import backup and replace current match history?'))return;records=arr;save();alert('Backup imported successfully!')}catch{alert('This backup file could not be read.')}e.target.value=''});
 $('clearBtn').addEventListener('click',()=>{if(confirm('This will permanently delete all saved match data in this browser. Export a backup first. Continue?')){records=[];save()}});
+loadProfile();
 load();
 </script>
 </body>
