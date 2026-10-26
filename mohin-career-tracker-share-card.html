@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0d">
+<title>Career Tracker</title>
+<style>
+:root{--bg:#09090b;--panel:#141416;--panel2:#1c1c20;--gold:#d8b45a;--gold2:#f2d88c;--muted:#a7a7ad;--line:#343438;--white:#f7f5ef;--green:#8cdaa2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#252014 0,#0b0b0d 48%);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:1000px;margin:auto;padding:18px 14px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 22px}.brand{font-weight:900;letter-spacing:2px;font-size:19px}.brand span{color:var(--gold)}.badge{border:1px solid #705a2a;color:var(--gold2);font-size:10px;letter-spacing:1.5px;padding:7px 9px;border-radius:99px}
+.hero{display:grid;grid-template-columns:1fr;gap:16px}.player-card{position:relative;overflow:hidden;min-height:250px;border:1px solid #8b7037;border-radius:22px;background:linear-gradient(140deg,#242017,#111113 60%,#332814);padding:20px;box-shadow:0 15px 45px #0008}.player-card:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #c9a64b35;border-radius:50%;right:-60px;top:20px;box-shadow:0 0 0 18px #c9a64b0a,0 0 0 40px #c9a64b08}.cardtop{display:flex;justify-content:space-between;position:relative}.rating{font-size:45px;line-height:1;font-weight:900;color:var(--gold2)}.position{font-size:14px;font-weight:800;letter-spacing:2px;margin-top:5px}.ovrlabel{font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:7px}.crest{width:50px;height:58px;border:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);display:grid;place-items:center;color:var(--gold2);font-weight:900;font-size:16px;background:#d8b45a12}.playername{position:relative;font-size:29px;font-weight:950;letter-spacing:3px;margin-top:0;overflow-wrap:anywhere}.subpos{position:relative;color:var(--gold2);font-size:11px;letter-spacing:2px;margin-top:5px}.attrs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;max-width:330px}.attr{display:flex;justify-content:space-between;border-bottom:1px solid #d8b45a55;padding:5px 0;font-size:12px}.attr b{color:var(--gold2)}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 12px}.section-title h2{font-size:14px;letter-spacing:1.7px;margin:0}.eyebrow{font-size:10px;color:var(--gold);letter-spacing:1.5px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:linear-gradient(145deg,#19191c,#111113);border:1px solid var(--line);border-radius:15px;padding:15px}.stat .label{font-size:11px;color:var(--muted)}.stat .num{font-size:27px;font-weight:850;margin-top:6px}.stat .num small{font-size:12px;color:var(--gold);font-weight:700}
+.panel{background:#121214ef;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}.profile-panel{border-color:#725b2b;background:linear-gradient(145deg,#1b1913,#111113)}.screen-hidden{display:none!important}.screen-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0 16px}.screen-title{font-size:13px;letter-spacing:1.5px;color:var(--gold2)}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.profile-grid .full{grid-column:1/-1}.profile-status{font-size:10px;color:var(--gold2);letter-spacing:1px}.player-identity{display:flex;align-items:center;gap:12px;position:relative;margin-top:22px}.profile-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:11px;color:#c7c4ba}input,select{width:100%;background:#09090b;color:var(--white);border:1px solid #414146;border-radius:10px;padding:12px 10px;font:inherit;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--gold)}.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:1px solid var(--gold);border-radius:11px;background:var(--gold);color:#17130a;font-weight:850;padding:12px 15px;font-size:12px;letter-spacing:.4px;cursor:pointer}.btn.secondary{background:transparent;color:var(--gold2)}.btn.danger{border-color:#744343;color:#ffaaaa;background:transparent}.hint{font-size:11px;line-height:1.5;color:var(--muted);margin-top:10px}.accuracy{color:var(--green);font-weight:800}.match{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #303034}.match:last-child{border-bottom:0}.match strong{display:block;font-size:13px}.match small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.matchright{text-align:right;white-space:nowrap}.matchright b{color:var(--gold2)}.empty{color:var(--muted);font-size:12px;text-align:center;padding:22px 5px}.foot{text-align:center;color:#76767b;font-size:10px;margin-top:28px;letter-spacing:1px}.share-tools{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0 0}.card-modal{position:fixed;inset:0;background:#000d;z-index:99;display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}.card-modal-box{width:min(100%,460px);max-height:95vh;overflow:auto;background:#121214;border:1px solid #8b7037;border-radius:18px;padding:16px}.card-preview{display:block;width:min(100%,320px);height:auto;margin:12px auto;border-radius:12px;box-shadow:0 10px 35px #0009}.card-modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.card-modal-head strong{letter-spacing:1px;color:var(--gold2);font-size:13px}
+@media(min-width:720px){.hero{grid-template-columns:1fr 1fr;align-items:stretch}.player-card{min-height:290px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stat .num{font-size:30px}.wrap{padding:25px 22px 45px}}
+@media(max-width:420px){.badge{font-size:9px}.playername{font-size:25px}.profile-grid,.formgrid{gap:9px}.panel{padding:13px}.btn{padding:11px 12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand">CAREER <span>TRACKER</span></div><div class="badge">PLAYER TRACKER · V2</div></header>
+
+<div id="profileScreen">
+  <div class="section-title" style="margin-top:0"><h2>CREATE YOUR PROFILE</h2><span class="eyebrow">YOUR PLAYER CARD</span></div>
+  <form class="panel profile-panel" id="profileForm">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <strong style="font-size:13px;letter-spacing:1px">PLAYER IDENTITY</strong>
+      <span class="profile-status" id="profileStatus">PROFILE NOT SET</span>
+    </div>
+    <div class="profile-grid">
+      <div class="field full"><label for="profileName">Player name</label><input id="profileName" maxlength="24" placeholder="Enter your name (e.g. Mohin)" required></div>
+      <div class="field"><label for="mainPosition">Main position</label><select id="mainPosition" required><option value="">Choose position</option><option>GK</option><option>LB</option><option>CB</option><option>RB</option><option>LWB</option><option>RWB</option><option>CDM</option><option>CM</option><option>CAM</option><option>LM</option><option>RM</option><option>LW</option><option>LWF</option><option>RW</option><option>RWF</option><option>CF</option><option>ST</option></select></div>
+      <div class="field"><label for="secondPosition">2nd position</label><select id="secondPosition"><option value="">None / choose</option><option>GK</option><option>LB</option><option>CB</option><option>RB</option><option>LWB</option><option>RWB</option><option>CDM</option><option>CM</option><option>CAM</option><option>LM</option><option>RM</option><option>LW</option><option>LWF</option><option>RW</option><option>RWF</option><option>CF</option><option>ST</option></select></div>
+    </div>
+    <div class="profile-buttons"><button class="btn" type="submit">SAVE PROFILE</button></div>
+    <div class="hint">Share the website link with friends so they can make their own profiles on their phones.</div>
+  </form>
+</div>
+
+<div id="dashboardScreen" class="screen-hidden">
+  <div class="screen-nav"><span class="screen-title">YOUR FOOTBALL CAREER</span><button class="btn secondary" id="editProfileBtn" type="button">EDIT PROFILE</button></div>
+  <div class="share-tools"><button class="btn" id="shareCardBtn" type="button">✦ SHARE MY CARD</button></div>
+  <section class="hero">
+    <div class="player-card">
+      <div class="cardtop"><div><div class="rating" id="overall">—</div><div class="position" id="cardMainPosition">POS</div><div class="ovrlabel">OVERALL RATING*</div></div><div class="crest" id="crestInitial">P</div></div>
+      <div class="player-identity"><div><div class="playername" id="cardPlayerName">YOUR NAME</div><div class="subpos" id="cardPositions">CHOOSE YOUR POSITIONS</div></div></div>
+      <div class="attrs"><div class="attr"><span>PAC</span><b id="pac">—</b></div><div class="attr"><span>SHO</span><b id="sho">—</b></div><div class="attr"><span>PAS</span><b id="pas">—</b></div><div class="attr"><span>DRI</span><b id="dri">—</b></div><div class="attr"><span>DEF</span><b id="def">—</b></div><div class="attr"><span>PHY</span><b id="phy">—</b></div></div>
+    </div>
+    <div>
+      <div class="section-title" style="margin-top:0"><h2>CAREER OVERVIEW</h2><span class="eyebrow">YOUR NUMBERS</span></div>
+      <div class="stats">
+        <div class="stat"><div class="label">Matches</div><div class="num" id="matches">0</div></div>
+        <div class="stat"><div class="label">Goals</div><div class="num" id="goals">0</div></div>
+        <div class="stat"><div class="label">Assists</div><div class="num" id="assists">0</div></div>
+        <div class="stat"><div class="label">Pass accuracy</div><div class="num" id="accuracy">—<small>%</small></div></div>
+        <div class="stat"><div class="label">Total passes</div><div class="num" id="passes">0</div></div>
+        <div class="stat"><div class="label">Successful passes</div><div class="num" id="success">0</div></div>
+        <div class="stat"><div class="label">Shots on target</div><div class="num" id="sot">0</div></div>
+        <div class="stat"><div class="label">Minutes played</div><div class="num" id="minutes">0</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title"><h2>ADD MATCH PERFORMANCE</h2><span class="eyebrow">MANUAL ENTRY</span></div>
+  <form class="panel" id="matchForm">
+    <div class="formgrid">
+      <div class="field"><label for="date">Match date</label><input id="date" type="date" required></div>
+      <div class="field"><label for="opponent">Opponent / match note</label><input id="opponent" maxlength="60" placeholder="e.g. Tuesday game"></div>
+      <div class="field"><label for="positionInput">Position played</label><select id="positionInput"><option>LB</option><option>LWF</option><option>LW</option><option>CM</option><option>CAM</option><option>CDM</option><option>RM</option><option>LM</option><option>RB</option><option>CB</option><option>ST</option><option>Other</option></select></div>
+      <div class="field"><label for="minutesInput">Minutes played</label><input id="minutesInput" type="number" min="0" max="240" value="60"></div>
+      <div class="field"><label for="goalsInput">Goals</label><input id="goalsInput" type="number" min="0" value="0" required></div>
+      <div class="field"><label for="assistsInput">Assists</label><input id="assistsInput" type="number" min="0" value="0" required></div>
+      <div class="field"><label for="passesInput">Total passes</label><input id="passesInput" type="number" min="0" value="0" required></div>
+      <div class="field"><label for="successfulInput">Successful passes</label><input id="successfulInput" type="number" min="0" value="0" required></div>
+      <div class="field"><label for="shotsInput">Shots</label><input id="shotsInput" type="number" min="0" value="0"></div>
+      <div class="field"><label for="sotInput">Shots on target</label><input id="sotInput" type="number" min="0" value="0"></div>
+      <div class="field"><label for="dribblesInput">Successful dribbles</label><input id="dribblesInput" type="number" min="0" value="0"></div>
+      <div class="field"><label for="tacklesInput">Successful tackles</label><input id="tacklesInput" type="number" min="0" value="0"></div>
+    </div>
+    <div class="btnrow"><button class="btn" type="submit">＋ SAVE MATCH</button><button class="btn secondary" type="reset">RESET FORM</button></div>
+    <div class="hint">Pass accuracy is calculated automatically. Successful passes cannot exceed total passes. Entries are saved in this browser on this phone.</div>
+  </form>
+  <div class="section-title"><h2>MATCH HISTORY</h2><span class="eyebrow" id="matchCount">0 MATCHES</span></div>
+  <div class="panel" id="history"><div class="empty">No matches recorded yet. Your career starts with the first entry. ⚽</div></div>
+  <div class="section-title"><h2>DATA & BACKUP</h2><span class="eyebrow">KEEP YOUR CAREER SAFE</span></div>
+  <div class="panel"><div class="hint" style="margin-top:0">Export a backup regularly. Browser data can be lost if site data is cleared or you switch browsers/devices.</div><div class="btnrow"><button class="btn secondary" id="exportBtn" type="button">EXPORT BACKUP</button><label class="btn secondary" for="importFile" style="display:inline-flex;align-items:center;cursor:pointer">IMPORT BACKUP</label><input id="importFile" type="file" accept="application/json,.json" style="display:none"><button class="btn danger" id="clearBtn" type="button">RESET ALL DATA</button></div></div>
+  <div class="foot">CAREER TRACKER · BLACK & GOLD · V2</div>
+</div>
+</div>
+
+<script>
+'use strict';
+function $(id){return document.getElementById(id)}
+const PROFILE_KEY='careerTrackerProfileV3';
+const MATCH_KEY='mohinCareerMatchesV1';
+let profile={name:'',main:'',second:''};
+let records=[];
+
+function applyProfile(){
+  $('profileName').value=profile.name||'';
+  $('mainPosition').value=profile.main||'';
+  $('secondPosition').value=profile.second||'';
+  $('cardPlayerName').textContent=(profile.name||'YOUR NAME').toUpperCase();
+  $('cardMainPosition').textContent=profile.main||'POS';
+  $('cardPositions').textContent=[profile.main,profile.second].filter(Boolean).join(' · ')||'CHOOSE YOUR POSITIONS';
+  $('crestInitial').textContent=(profile.name||'P').trim().charAt(0).toUpperCase();
+  $('profileStatus').textContent=profile.name&&profile.main?'PROFILE SAVED':'PROFILE NOT SET';
+}
+function showDashboard(){
+  $('profileScreen').classList.add('screen-hidden');
+  $('dashboardScreen').classList.remove('screen-hidden');
+  window.scrollTo({top:0,behavior:'auto'});
+}
+function loadProfile(){
+  try{profile=JSON.parse(localStorage.getItem(PROFILE_KEY)||'{}')||{};}catch(e){profile={name:'',main:'',second:''};}
+  applyProfile();
+  if(profile.name&&profile.main)showDashboard();
+}
+$('shareCardBtn').addEventListener('click', openShareCard);
+$('editProfileBtn').addEventListener('click',()=>{
+  $('dashboardScreen').classList.add('screen-hidden');
+  $('profileScreen').classList.remove('screen-hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+$('profileForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('profileName').value.trim(),main=$('mainPosition').value;
+  if(!name||!main){alert('Enter your name and choose your main position.');return;}
+  profile={name,main,second:$('secondPosition').value};
+  try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));applyProfile();showDashboard();}
+  catch(err){alert('Profile save failed. Your browser may not allow local storage in this mode.');}
+});
+
+const numeric=id=>Math.max(0,Number($(id).value)||0);
+function sum(key){return records.reduce((n,r)=>n+(Number(r[key])||0),0)}
+function rating(n){return Math.max(1,Math.min(99,Math.round(n)))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+  const totalPass=sum('passes'),goodPass=sum('successful'),g=sum('goals'),a=sum('assists'),matches=records.length,minutes=sum('minutes');
+  $('matches').textContent=matches;$('goals').textContent=g;$('assists').textContent=a;$('passes').textContent=totalPass;$('success').textContent=goodPass;$('sot').textContent=sum('sot');$('minutes').textContent=minutes;
+  $('accuracy').innerHTML=(totalPass?Math.round(goodPass/totalPass*100):0)+'<small>%</small>';
+  const passRate=totalPass?goodPass/totalPass:0,dr=sum('dribbles'),t=sum('tackles');
+  const attrs={pac:matches?rating(55+Math.min(25,dr/matches*3)):null,sho:matches?rating(45+Math.min(35,g/matches*18+sum('sot')/matches*2)):null,pas:matches?rating(45+passRate*35+Math.min(15,totalPass/Math.max(1,matches)/4)):null,dri:matches?rating(45+Math.min(35,dr/Math.max(1,matches)*4)):null,def:matches?rating(45+Math.min(35,t/Math.max(1,matches)*5)):null,phy:matches?rating(50+Math.min(25,minutes/Math.max(1,matches)/4)):null};
+  Object.entries(attrs).forEach(([k,v])=>$(k).textContent=v??'—');
+  $('overall').textContent=matches?rating(Object.values(attrs).reduce((n,v)=>n+(v||0),0)/6):'—';
+  $('matchCount').textContent=`${matches} MATCH${matches===1?'':'ES'}`;
+  const h=$('history');
+  if(!matches){h.innerHTML='<div class="empty">No matches recorded yet. Your career starts with the first entry. ⚽</div>';return}
+  h.innerHTML=[...records].sort((x,y)=>String(y.date).localeCompare(String(x.date))).map(r=>`<div class="match"><div><strong>${esc(r.opponent||'Match day')} · ${esc(r.position)}</strong><small>${esc(r.date)} · ${Number(r.minutes)||0} min · ${Number(r.passes)||0} passes (${Number(r.successful)||0}/${r.passes?Math.round(r.successful/r.passes*100):0}% accurate)</small><small>${Number(r.shots)||0} shots · ${Number(r.sot)||0} on target · ${Number(r.dribbles)||0} dribbles · ${Number(r.tackles)||0} tackles</small></div><div class="matchright"><b>${Number(r.goals)||0} G · ${Number(r.assists)||0} A</b><br><button class="btn danger" style="padding:6px 8px;margin-top:7px;font-size:10px" data-delete="${esc(r.id)}">DELETE</button></div></div>`).join('');
+}
+
+function openShareCard(){
+  const modal=document.createElement('div');modal.className='card-modal';modal.id='shareCardModal';
+  modal.innerHTML='<div class="card-modal-box"><div class="card-modal-head"><strong>YOUR PLAYER CARD</strong><button class="btn secondary" type="button" id="closeShareCard">CLOSE ✕</button></div><canvas class="card-preview" id="shareCardCanvas" width="900" height="1200" aria-label="Player card preview"></canvas><div class="btnrow"><button class="btn" type="button" id="downloadShareCard">↓ DOWNLOAD PNG</button><button class="btn secondary" type="button" id="nativeShareCard">SHARE</button></div><div class="hint">Generated from your current profile and career stats. No player photo needed.</div></div>';
+  document.body.appendChild(modal); drawShareCard($('shareCardCanvas'));
+  $('closeShareCard').onclick=()=>modal.remove();modal.addEventListener('click',e=>{if(e.target===modal)modal.remove()});
+  $('downloadShareCard').onclick=()=>{const a=document.createElement('a');a.download=(profile.name||'player').trim().replace(/[^a-z0-9-_]+/gi,'-').toLowerCase()+'-player-card.png';a.href=$('shareCardCanvas').toDataURL('image/png');a.click()};
+  $('nativeShareCard').onclick=async()=>{try{const blob=await new Promise(resolve=>$('shareCardCanvas').toBlob(resolve,'image/png'));const file=new File([blob],(profile.name||'player')+'-player-card.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:(profile.name||'Player')+' — Player Card',text:'My football career card'});}else{$('downloadShareCard').click();alert('Image downloaded. You can now share it from your gallery.');}}catch(err){if(err.name!=='AbortError')alert('Sharing is not available here. Please download the PNG instead.')}};
+}
+function drawShareCard(canvas){
+  const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;
+  const grad=ctx.createLinearGradient(0,0,W,H);grad.addColorStop(0,'#292316');grad.addColorStop(.48,'#101012');grad.addColorStop(1,'#211a0c');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#d8b45a';ctx.lineWidth=5;ctx.strokeRect(26,26,W-52,H-52);ctx.strokeStyle='#d8b45a55';ctx.lineWidth=2;ctx.strokeRect(43,43,W-86,H-86);
+  ctx.save();ctx.globalAlpha=.12;ctx.strokeStyle='#f2d88c';ctx.lineWidth=3;for(let i=-H;i<W;i+=70){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+H,H);ctx.stroke()}ctx.restore();
+  ctx.fillStyle='#d8b45a';ctx.font='bold 26px system-ui';ctx.letterSpacing='6px';ctx.fillText('MOHIN CAREER TRACKER',70,94);
+  ctx.fillStyle='#f2d88c';ctx.font='900 190px system-ui';ctx.fillText($('overall').textContent.trim()||'—',65,330);
+  ctx.fillStyle='#c8c2b3';ctx.font='bold 24px system-ui';ctx.fillText('OVERALL RATING',75,375);
+  ctx.fillStyle='#f7f5ef';let name=(profile.name||'YOUR NAME').toUpperCase(),nameSize=58;ctx.font='900 '+nameSize+'px system-ui';while(ctx.measureText(name).width>760&&nameSize>34){nameSize-=4;ctx.font='900 '+nameSize+'px system-ui'}ctx.fillText(name,70,485);
+  ctx.fillStyle='#f2d88c';ctx.font='bold 30px system-ui';ctx.fillText([profile.main,profile.second].filter(Boolean).join('  /  ')||'PLAYER',72,535);
+  ctx.strokeStyle='#d8b45a88';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(70,575);ctx.lineTo(830,575);ctx.stroke();
+  const attrs=[['PAC','pac'],['SHO','sho'],['PAS','pas'],['DRI','dri'],['DEF','def'],['PHY','phy']];
+  attrs.forEach(([label,id],i)=>{const col=i%2,row=Math.floor(i/2),x=85+col*395,y=655+row*112;ctx.fillStyle='#bdb7a7';ctx.font='bold 27px system-ui';ctx.fillText(label,x,y);ctx.fillStyle='#f2d88c';ctx.font='900 48px system-ui';ctx.fillText($(id).textContent.trim()||'—',x+220,y+2);ctx.fillStyle='#d8b45a55';ctx.fillRect(x,y+20,290,2)});
+  ctx.strokeStyle='#d8b45a88';ctx.beginPath();ctx.moveTo(70,1000);ctx.lineTo(830,1000);ctx.stroke();
+  const totals=[['MATCHES','matches'],['GOALS','goals'],['ASSISTS','assists']];totals.forEach(([label,id],i)=>{const x=90+i*265;ctx.fillStyle='#f2d88c';ctx.font='900 48px system-ui';ctx.fillText($(id).textContent.trim()||'0',x,1080);ctx.fillStyle='#c8c2b3';ctx.font='bold 22px system-ui';ctx.fillText(label,x,1120)});
+  ctx.fillStyle='#8c8779';ctx.font='18px system-ui';ctx.fillText('CAREER STATS · BLACK & GOLD',70,1160);
+}
+
+function saveRecords(){
+  try{localStorage.setItem(MATCH_KEY,JSON.stringify(records));render();}
+  catch(e){alert('Could not save match data. Check browser storage settings.');}
+}
+function loadRecords(){
+  try{const parsed=JSON.parse(localStorage.getItem(MATCH_KEY)||'[]');records=Array.isArray(parsed)?parsed:[];}catch(e){records=[];}
+  render();
+}
+$('matchForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const passes=numeric('passesInput'),successful=numeric('successfulInput'),shots=numeric('shotsInput'),sot=numeric('sotInput');
+  if(successful>passes){alert('Successful passes cannot be greater than total passes.');return}
+  if(sot>shots){alert('Shots on target cannot be greater than total shots.');return}
+  const r={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:$('date').value,opponent:$('opponent').value.trim(),position:$('positionInput').value,minutes:numeric('minutesInput'),goals:numeric('goalsInput'),assists:numeric('assistsInput'),passes,successful,shots,sot,dribbles:numeric('dribblesInput'),tackles:numeric('tacklesInput')};
+  records.push(r);saveRecords();
+  const d=$('date').value;e.target.reset();$('date').value=d;$('minutesInput').value=60;
+  ['goalsInput','assistsInput','passesInput','successfulInput','shotsInput','sotInput','dribblesInput','tacklesInput'].forEach(id=>$(id).value=0);
+});
+$('history').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-delete]');if(!btn)return;
+  const id=btn.getAttribute('data-delete');
+  if(confirm('Delete this match record?')){records=records.filter(r=>String(r.id)!==id);saveRecords();}
+});
+$('exportBtn').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify({app:'Career Tracker',version:2,exportedAt:new Date().toISOString(),profile,records},null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='career-tracker-backup.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+$('importFile').addEventListener('change',async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const obj=JSON.parse(await f.text());const arr=Array.isArray(obj)?obj:obj.records;
+    if(!Array.isArray(arr))throw Error('Invalid backup');
+    if(!confirm('Import backup and replace current match history?'))return;
+    records=arr;saveRecords();
+    if(obj.profile&&obj.profile.name&&obj.profile.main){profile=obj.profile;localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));applyProfile();}
+    alert('Backup imported successfully!');
+  }catch(err){alert('This backup file could not be read.');}
+  finally{e.target.value='';}
+});
+$('clearBtn').addEventListener('click',()=>{
+  if(!confirm('This will permanently delete the saved profile and all match history on this browser. Continue?'))return;
+  try{localStorage.removeItem(PROFILE_KEY);localStorage.removeItem(MATCH_KEY);}catch(e){}
+  profile={name:'',main:'',second:''};records=[];applyProfile();render();
+  $('dashboardScreen').classList.add('screen-hidden');$('profileScreen').classList.remove('screen-hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+const now=new Date();$('date').value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+loadProfile();loadRecords();
+</script>
+</body>
+</html>
